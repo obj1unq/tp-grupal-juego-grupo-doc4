@@ -53,6 +53,10 @@ class Pared{
     }
 }
 
+class ParedSucia inherits Pared(image = "bric_sucio.png"){
+
+}
+
 class Enemigo{
     const position
     const property image = "muerto_vivo.png"
@@ -70,10 +74,12 @@ class Enemigo{
 
 object p{ //Fabrica de Paredes
     const mundo = mapaActual
+    const nombres = ["brick_1.png", "brick_2.png", "brick_3.png"]
     //const property image = "brick_3.png"
     
     method dibujar(posicion){
-        const pared = new Pared(position = posicion)
+
+        const pared = new Pared(image = nombres.anyOne(), position = posicion)
         
         mundo.agregarObstaculo(pared)    
         pared.dibujarse()
