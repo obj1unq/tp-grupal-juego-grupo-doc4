@@ -1,0 +1,32 @@
+import wollok.game.*
+
+import heroina.*
+import direcciones.*
+import tablero.*
+
+program heroinaGame {
+	game.width(5) //Ancho, X
+	game.height(4) //Alto, Y
+	game.cellSize(32) //Alto, Y
+
+	game.ground("mesh0.png")
+	//tablero.configurar()
+
+	nivel.dibujar()
+	
+	keyboard.w().onPressDo({heroina.usarDireccion(arriba)})	
+	keyboard.a().onPressDo({heroina.usarDireccion(izquierda)})
+	keyboard.s().onPressDo({heroina.usarDireccion(abajo)})
+	keyboard.d().onPressDo({heroina.usarDireccion(derecha)})
+
+	//game.addVisual(heroina) Esto se mejoro al implementar el mapa! NO ES NECESARIO!
+    //keyboard.l().onPressDo({heroina.lanzarMagia()})
+
+	game.onCollideDo(heroina, {algo => algo.impactar(heroina)} )
+
+   	game.start()	
+
+	//game.removeVisual(heroina)
+
+	
+}
